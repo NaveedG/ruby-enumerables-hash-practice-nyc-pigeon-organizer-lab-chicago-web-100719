@@ -1,13 +1,13 @@
 def nyc_pigeon_organizer(data)
   new_hash = {}
-  data.each do |firstkey, value_hash|
-      value_hash.each do |secondkey, values|
-        values.each do |value|
-          new_hash[value] = {} if !new_hash[value]
-          new_hash[value][firstkey] = [] if !new_hash[value][firstkey]
-          new_hash[value][firstkey].push(secondkey.to_s)
-        end
+  data.each do |category, category_hash|
+    category_hash.each do |sub_category, names|
+      names.each do |name|
+        new_hash[name] = {} if !new_hash[name]
+        new_hash[name][category] = [] if !new_hash[name][category]
+        new_hash[name][category].push(sub_category.to_s)
       end
     end
+  end
   new_hash
 end
